@@ -1,0 +1,20 @@
+<h1 align="center">Articles List</h1>
+<% flash.each do |name,msg| %>
+	<%= content_tag :div,msg,class: name%>
+<% end %>
+<table align="center" border="1">
+	<tr>
+		<td>Title</td>
+		<td>Content</td>
+		<td>Publish</td>
+		<td>Action</td>
+	</tr>
+	<% @article.each do |article| %>
+	<tr>
+		<td><%= article[:title]%></td>
+		<td><%= article[:content]%></td>
+		<td><%= article[:is_publish]%></td>
+		<td><%= link_to "Edit", edit_admin_article_path(article)%> </td>
+	</tr>
+	<% end %>
+</table>

@@ -1,0 +1,26 @@
+<h1 align="center">Comments List</h1>
+<% flash.each do |name,msg| %>
+	<%= content_tag :div,msg,class: name %>
+<% end %>
+<table align="center" border="1">
+	<tr>
+		<td>Name</td>
+		<td>Email</td>
+		<td>Message</td>
+		<td>Status</td>
+		<td>Action</td>
+	
+	</tr>
+	<% @comment.each do |comment| %>
+	<tr>
+		<td><%= comment[:fullname] %></td>
+		<td><%= comment[:email] %></td>
+		<td><%= comment[:message] %></td>
+		<td><%= comment[:status] %></td>
+		<td>
+			<%= link_to "Edit", edit_admin_comment_path(comment) %> 
+		</td>
+
+	</tr>
+	<% end %>	
+</table>
