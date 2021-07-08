@@ -10,7 +10,6 @@ class ApplicationController < ActionController::Base
   	unless current_user 
   		redirect_to new_admin_session_path
   	end
-  	
-  end
- 	
+ 	  return 	
+ end
 end
