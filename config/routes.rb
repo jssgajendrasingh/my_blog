@@ -7,7 +7,14 @@ Rails.application.routes.draw do
   # 		end	
   # 	end	
   # end
+
   namespace :admin do
-  	resources :users, :articles,:comments
+  	resources :users , only: [:index,:edit,:update]
+    resources :articles , only: [:index,:edit,:update]
+    resources :comments , only: [:index,:edit,:update]
+    resources :sessions, only: [:new, :create, :destroy]
   end
+
+  #get '/login', to: 'admin/sessions#new', as: :admin_login
+  #delete '/logout', to: 'admin/sessions#destroy', as: :admin_logout
 end
