@@ -63,3 +63,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #faker gem
  gem 'faker'
+
+#bootstrap gem
+ gem 'bootstrap', '~> 4.0.0' 
