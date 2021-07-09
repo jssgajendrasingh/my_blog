@@ -9,12 +9,12 @@ Rails.application.routes.draw do
   # end
 
   namespace :admin do
-  	resources :users , only: [:index,:edit,:update]
+  	resources :users , except: [:destroy]
     resources :articles , only: [:index,:edit,:update]
     resources :comments , only: [:index,:edit,:update]
     resources :sessions, only: [:new, :create, :destroy]
   end
 
-  #get '/login', to: 'admin/sessions#new', as: :admin_login
-  #delete '/logout', to: 'admin/sessions#destroy', as: :admin_logout
+  get '/login', to: 'admin/sessions#new', as: :admin_login
+  delete '/logout', to: 'admin/sessions#destroy', as: :admin_logout
 end

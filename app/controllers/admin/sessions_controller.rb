@@ -11,12 +11,15 @@ class Admin::SessionsController < ApplicationController
   		session[:user_id] = @user.id
   		redirect_to admin_users_path
  		else
+ 			flash[:error] = "email id and password is not match"
   		redirect_to admin_login_path
  		end
 	end
 
 	def destroy
 		session[:user_id] = nil
+		flash[:notice] = "User logout successfully"
+		redirect_to admin_login_path
   end
 	
 end

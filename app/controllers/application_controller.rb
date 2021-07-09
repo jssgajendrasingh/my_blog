@@ -8,8 +8,10 @@ class ApplicationController < ActionController::Base
 
   def authorize
   	unless current_user 
-  		redirect_to new_admin_session_path
+			flash[:notice] = "Please Login before perform actions"
+  		redirect_to admin_login_path
   	end
  	  return 	
  end
+ 
 end

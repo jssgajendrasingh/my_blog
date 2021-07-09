@@ -1,4 +1,7 @@
-<%= link_to "Log Out",admin_session_path,method: :delete %>
+<%= link_to "Log Out",admin_logout_path,method: :delete %>
+<% flash.each do |name,msg| %>
+	<%= content_tag :div,msg,class: name %>
+<% end %>
 <h2 align="center">User List</h2>
 <table align="center" border="1" class="table table-striped">
 	<tr>
