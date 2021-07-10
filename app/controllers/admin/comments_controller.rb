@@ -9,13 +9,14 @@ class Admin::CommentsController < ApplicationController
 
 	def update
 		@comment = Comment.find(params[:id])
-		byebug
 		if @comment.update(comment_params)
 			flash[:notice] = "Comment is Updated is Successfully"
+			@comment = Comment.all
+			render :index		
 		else 
 			flash[:notice] = "Comment updation is failure"
+			render :edit
 		end
-		redirect_to admin_comments_path		
 	end	
 
 	private

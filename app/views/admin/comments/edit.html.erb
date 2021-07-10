@@ -1,3 +1,7 @@
+<% flash.each do |name,msg| %>
+	<%= content_tag :div,msg,class: name %>
+<% end %>
+ <div class="form-group">
 <%= form_for([:admin,@comment]) do |form| %>
  <p>
  	<%= form.label :fullname %>
@@ -9,7 +13,7 @@
  </p>
  <p>
  	<%= form.label :message %>
- 	<%= form.text_field :message %>
+ 	<%= form.text_area :message,cols: 50, rows: 5 %>
  </p>
  <p>
  	<%= form.label :status %>
@@ -20,4 +24,5 @@
  </p>
  
 <% end %>
+</div>
 

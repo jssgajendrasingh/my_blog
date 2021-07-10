@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_07_07_065917) do
+ActiveRecord::Schema.define(version: 2021_07_09_111356) do
 
   create_table "article_tags", force: :cascade do |t|
     t.integer "article_id"
@@ -22,7 +22,7 @@ ActiveRecord::Schema.define(version: 2021_07_07_065917) do
   create_table "articles", force: :cascade do |t|
     t.string "title"
     t.text "content"
-    t.boolean "is_publish"
+    t.boolean "is_publish", default: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 2021_07_07_065917) do
     t.string "fullname"
     t.string "email"
     t.text "message"
-    t.boolean "status"
+    t.boolean "status", default: false
     t.integer "article_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -76,6 +76,7 @@ ActiveRecord::Schema.define(version: 2021_07_07_065917) do
     t.string "password_digest"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.boolean "super_admin"
   end
 
 end

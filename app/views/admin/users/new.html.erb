@@ -1,0 +1,26 @@
+<h1 align="center">User Registation Form</h1>
+<%= form_for(:new,url: admin_users_path) do |f|%>
+	<p>
+	  <%= f.label :first_name %>
+	  <%= f.text_field :first_name,:required => true %>
+	</p>
+	<p>
+	  <%= f.label :lastname %>
+	  <%= f.text_field :last_name,:required => true %>
+	</p>
+  <p>
+	  <%= f.label :about %>
+	  <%= f.text_field :about,:required => true %>
+	</p>
+	<p>
+	  <%= f.label :email %>
+	  <%= f.text_field :email,:required => true %>
+	</p>
+	<p>
+		<%= f.label :password %>
+		<%= f.password_field :password ,:required => true%>
+	</p>
+	<p>
+		<%= f.submit %>
+	</p>
+<% end %>

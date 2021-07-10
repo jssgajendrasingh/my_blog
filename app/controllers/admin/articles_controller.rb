@@ -9,10 +9,12 @@ class Admin::ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		if @article.update(article_params)
 			flash[:notice] = "Article Updated Successfully"
+			@article = Article.all
+			render :index
 		else
 			flash[:notice] = "Article Updation failure"
+			render :edit
 		end
-		redirect_to admin_articles_path		
 	end	
 	private
 	def article_params

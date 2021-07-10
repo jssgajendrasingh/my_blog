@@ -1,3 +1,6 @@
+<% flash.each do |name,msg| %>
+	<%= content_tag :div,msg,class: name%>
+<% end %>
 <%= form_for([:admin,@article]) do |form| %>
 <p>
 	<%= form.label :title %>
@@ -5,11 +8,11 @@
 </p>
 <p>
 	<%= form.label :content %>
-	<%= form.text_field :content %>
+	<%= form.text_area :content,cols: 50, rows: 5 %>
 </p>
 <p>
 	<%= form.label :is_publish %>
-	<%= form.text_field :is_publish %>
+	<%= form.check_box :is_publish %>
 </p>
 <p>
 	<%= form.submit("Update") %>

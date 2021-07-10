@@ -48,6 +48,7 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'pry-rails'
 end
 
 group :test do
@@ -62,7 +63,14 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 
 #faker gem
+<<<<<<< HEAD
  gem 'faker'
 
 #bootstrap gem
- gem 'bootstrap', '~> 4.0.0' 
+gem 'bootstrap', '~> 4.0.0' 
+gem 'faker'
+#bootstrap 
+gem 'bootstrap', '~> 4.0.0'
+gem 'jquery-rails'
+gem 'will_paginate', '~> 3.1.0'
+gem 'cancancan'
