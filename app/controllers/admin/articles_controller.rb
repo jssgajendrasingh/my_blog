@@ -1,4 +1,5 @@
 class Admin::ArticlesController < ApplicationController
+	load_and_authorize_resource
 	def index
 		@article = Article.all
 	end	

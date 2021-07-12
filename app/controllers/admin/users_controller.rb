@@ -1,5 +1,5 @@
 class Admin::UsersController < ApplicationController
-	
+	load_and_authorize_resource
 	def index
 		@user = User.all
 	end	
@@ -33,14 +33,23 @@ class Admin::UsersController < ApplicationController
 	def user_params
 		user = params[:user]
 		password = user[:password]
-		if password == ""
+		super_admin = user[:super_admin]
+		if password == "" && super_admin == ""
 			params.require(:user).permit(:first_name,:last_name,:about,:email)
-		else
+		elsif password == ""
+			params.require(:user).permit(:first_name,:last_name,:about,:email,:super_admin)
+		else 
 			params.require(:user).permit(:first_name,:last_name,:about,:email,:password)
 		end
 	end	
 	
 	def newuser_params
-		params.require(:new).permit(:first_name,:last_name,:about,:email,:password)
+		user = params[:user]
+		super_admin = user[:super_admin]
+		if super_admin == ""
+			params.require(:new).permit(:first_name,:last_name,:about,:email,:password)
+		else
+			params.require(:new).permit(:first_name,:last_name,:about,:email,:password,:super_admin)
+		end		
 	end	
 end

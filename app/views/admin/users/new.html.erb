@@ -21,6 +21,10 @@
 		<%= f.password_field :password ,:required => true%>
 	</p>
 	<p>
+		<%= f.label :super_admin %>
+		<%= f.check_box :super_admin %>
+	</p>
+	<p>
 		<%= f.submit %>
 	</p>
 <% end %>
