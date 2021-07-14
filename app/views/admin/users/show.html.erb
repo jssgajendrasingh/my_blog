@@ -1,0 +1,28 @@
+<br>
+<h3 align="center">
+	<%= @user.first_name.capitalize %>&nbsp<%= @user.last_name.capitalize %> Details
+</h3>
+<div align="center">
+	<table border="1">
+		<tr>
+			<td>First Name</td>
+			<td><%= @user.first_name %></td>
+		</tr>
+		<tr>
+			<td>Last Name</td>
+			<td><%= @user.last_name %></td>
+		</tr>
+		<tr>
+			<td>About</td>
+			<td><%= @user.about %></td>
+		</tr>
+		<tr>
+			<td>Email</td>
+			<td><%= @user.email %></td>
+		</tr>
+		<tr>
+			<td>Super Admin</td>
+			<td><%= @user.super_admin ? "Yes" : "No" %></td>
+		</tr>
+	</table>
+</div>

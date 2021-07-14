@@ -4,12 +4,18 @@ class Admin::SessionsController < ApplicationController
 	def new 
 	end
 
+	def home
+	end 
+
+	def index
+	end	
+
 	def create
 		#binding.pry
 		@user = User.find_by(email: params[:email])
 		if @user && @user.authenticate(params[:password])
   		session[:user_id] = @user.id
-  		redirect_to admin_users_path
+  		redirect_to home_admin_sessions_path
  		else
  			flash[:error] = "email id and password is not match"
   		redirect_to admin_login_path

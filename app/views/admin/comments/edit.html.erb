@@ -1,7 +1,4 @@
-	<% flash.each do |name,msg| %>
-	<%= content_tag :div,msg,class: name %>
-<% end %>
- <div class="form-group">
+<div class="form-group">
 <%= form_for([:admin,@comment]) do |form| %>
  <p>
  	<%= form.label :fullname %>

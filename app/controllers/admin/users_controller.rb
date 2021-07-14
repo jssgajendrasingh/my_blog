@@ -10,6 +10,14 @@ class Admin::UsersController < ApplicationController
 
 	end 
 
+	def change_password
+		@user = User.find(params[:id])
+	end	
+
+	def update_password
+		binding.pry
+	end
+		
 	def create
 		#binding.pry
 		@user = User.create(newuser_params)
@@ -27,6 +35,18 @@ class Admin::UsersController < ApplicationController
 			render :edit
 		end
 		#redirect_to admin_users_path	
+	end
+
+	def show
+		#binding.pry
+		@user = User.find(params[:id])
+	end	
+
+	
+	def make_super
+		@u = User.find(params[:id])
+		@u.update(super_admin: true)
+		@user = User.all
 	end
 
 	private

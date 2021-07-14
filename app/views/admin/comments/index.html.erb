@@ -1,8 +1,5 @@
 <%= link_to "Log Out",admin_logout_path,method: :delete %>
 <h1 align="center">Comments List</h1>
-<% flash.each do |name,msg| %>
-	<%= content_tag :div,msg,class: name %>
-<% end %>
 <table align="center" border="1">
 	<tr>
 		<td>Name</td>

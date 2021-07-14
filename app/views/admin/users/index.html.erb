@@ -1,28 +1,13 @@
 <%= link_to "Log Out",admin_logout_path,method: :delete %>
-<% flash.each do |name,msg| %>
-	<%= content_tag :div,msg,class: name %>
-<% end %>
 <h2 align="center">User List</h2>
-<table align="center" border="1" class="table table-striped">
-	<tr>
-		<th>First Name</th>
-		<th>Last Name</th>
-		<th>About</th>
-		<th>Email</th>
-		<th>Create</th>
-		<th>Action</th>
-	</tr>
-	<% @user.each do |user| %>
-	<tr>
-		<td><%= user[:first_name] %></td>
-		<td><%= user[:last_name] %></td>
-		<td><%= user[:about] %></td>
-		<td><%= user[:email] %>
-		<td><%= time_ago_in_words(user[:created_at]) %> ago</td>
-		<td>
-			<%= link_to("Edit",edit_admin_user_path(user)) %>
-		</td>	
-	</tr>
-	<% end %>
-</table>
+<div id="user_data">
+			<%= render "userlist" %>
+</div>
 
+<style type="text/css">
+	.sp-class {
+    color: #398f94;
+    border: 1px solid #398f94;
+    font-size: 12px;
+}
+</style>

@@ -9,12 +9,18 @@ Rails.application.routes.draw do
   # end
 
   namespace :admin do
-  	resources :users , except: [:destroy]
+  	resources :users , except: [:destroy] do 
+      get "change_password", on: :member
+      patch "update_password", on: :member
+    end 
     resources :articles , only: [:index,:edit,:update]
     resources :comments , only: [:index,:edit,:update]
-    resources :sessions, only: [:new, :create, :destroy]
+    resources :sessions, only: [:new, :create, :destroy] do 
+      get "home", on: :collection
+    end  
   end
-
+  root 'admin/sessions#index'
   get '/login', to: 'admin/sessions#new', as: :admin_login
   delete '/logout', to: 'admin/sessions#destroy', as: :admin_logout
+  get 'user/:id/role', to: "admin/users#make_super", as: :make_superadmin
 end
