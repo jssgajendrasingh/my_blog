@@ -4,8 +4,12 @@ module ApplicationHelper
 		time_ago_in_words(time) + " " + "ago"
 	end
 
-  def article_publish(status)
-  	status == true ? "Approved" : "Unapproved"
+  def article_publish(status, truthy: "", falsey: "")
+  	if status
+  		truthy
+  	else
+  		falsey
+  	end
   end	
 
 end

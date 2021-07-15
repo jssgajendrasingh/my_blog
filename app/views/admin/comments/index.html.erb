@@ -5,7 +5,6 @@
 		<td>Email</td>
 		<td>Message</td>
 		<td>Status</td>
-		<td>Action</td>
 	
 	</tr>
 	<% @comment.each do |comment| %>
@@ -13,11 +12,7 @@
 		<td><%= comment.fullname%></td>
 		<td><%= comment.email %></td>
 		<td><%= comment.message %></td>
-		<td><%= article_publish(comment.status) %></td>
-		<td>
-			<%= link_to "Edit", edit_admin_comment_path(comment) %> 
-		</td>
-
+		<td><%= article_publish(comment.status, truthy: "Approved", falsey: "Un-approved") %></td>
 	</tr>
 	<% end %>	
 </table>

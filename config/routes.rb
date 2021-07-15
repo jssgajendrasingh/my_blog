@@ -13,8 +13,8 @@ Rails.application.routes.draw do
       get "change_password", on: :member
       patch "update_password", on: :member
     end 
-    resources :articles , only: [:index,:edit,:update]
-    resources :comments , only: [:index,:edit,:update]
+    resources :articles , only: [:index,:edit,:update,:show]
+    resources :comments , only: [:index]
     resources :sessions, only: [:create] 
   
   end

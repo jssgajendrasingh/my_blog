@@ -1,0 +1,21 @@
+<div align="center">
+	<table border="1">
+		<tr>
+			<td>Title</td>
+			<td><%= @article.title %></td>
+		</tr>
+		<tr>
+			<td>Content</td>
+			<td><%= @article.content %></td>
+		</tr>
+		<tr>
+			<td>Publish</td>
+			<td><%= article_publish(@article.is_publish, truthy: "Yes", falsey: "No") %></td>
+		</tr>
+		<tr>
+			<td>Created</td>
+			<td><%= time_data(@article.created_at) %></td>
+		</tr>
+		
+	</table>
+</div>

@@ -11,7 +11,7 @@
 	<tr>
 		<td><%= article.title%></td>
 		<td><%= article.content%></td>
-		<td><%= article.is_publish%></td>
+		<td><%= article_publish(article.is_publish, truthy: "Yes", falsey: "No") %></td>
 		<td><%= time_data(article.created_at) %></td>
 		<td><%= link_to "Edit", edit_admin_article_path(article)%> </td>
 	</tr>
