@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 	load_and_authorize_resource
 	def index
-		@user = User.all
+		@user = User.paginate(page: params[:page], per_page: 5)
 	end	
 	def edit
 		@user = User.find(params[:id])
@@ -15,7 +15,21 @@ class Admin::UsersController < ApplicationController
 	end	
 
 	def update_password
-		binding.pry
+		#binding.pry
+		@user = User.find(params[:id])
+		user = params[:user]
+		password = user[:password]
+		confirm_password = user[:confirm_password]
+		if password == confirm_password 
+			  @user.password = password
+			  if @user.save
+		     flash[:notice] = "password Update Successfully"	
+				 redirect_to admin_users_path			
+			  end 	
+		else
+			flash[:notice] = "password not match"	
+			render :change_password	
+		end	
 	end
 		
 	def create
@@ -28,7 +42,7 @@ class Admin::UsersController < ApplicationController
 		user = User.find(params[:id])
 		if user.update(user_params)
 			flash[:notice] = "User Record Update Successfully"
-			@user = User.all
+		  @user = User.paginate(page: params[:page], per_page: 5)
 			render :index	
 		else
 			flash[:notice] = "User Updation is failure"	
@@ -46,7 +60,7 @@ class Admin::UsersController < ApplicationController
 	def make_super
 		@u = User.find(params[:id])
 		@u.update(super_admin: true)
-		@user = User.all
+		@user = User.paginate(page: params[:page], per_page: 5)
 	end
 
 	private

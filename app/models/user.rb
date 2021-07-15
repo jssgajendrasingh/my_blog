@@ -7,4 +7,5 @@ class User < ApplicationRecord
   	validates :email, uniqueness: true,format: { with: VALID_EMAIL_REGEX }
   	validates :first_name, length: {minimum: 3}
   	validates :password_digest , length: {minimum: 6}
+
 end

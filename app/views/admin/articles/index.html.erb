@@ -1,18 +1,24 @@
-<%= link_to "Log Out",admin_logout_path,method: :delete %>
-<h1 align="center">Articles List</h1>
+<h3 align="center">Articles</h3>
 <table align="center" border="1">
 	<tr>
 		<td>Title</td>
 		<td>Content</td>
 		<td>Publish</td>
+		<td>Created</td>
 		<td>Action</td>
 	</tr>
 	<% @article.each do |article| %>
 	<tr>
-		<td><%= article[:title]%></td>
-		<td><%= article[:content]%></td>
-		<td><%= article[:is_publish]%></td>
+		<td><%= article.title%></td>
+		<td><%= article.content%></td>
+		<td><%= article.is_publish%></td>
+		<td><%= time_data(article.created_at) %></td>
 		<td><%= link_to "Edit", edit_admin_article_path(article)%> </td>
 	</tr>
 	<% end %>
 </table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">    
+<%= will_paginate @article %>
+  </ul>
+</nav>

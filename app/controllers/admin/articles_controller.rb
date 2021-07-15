@@ -1,7 +1,7 @@
 class Admin::ArticlesController < ApplicationController
 	load_and_authorize_resource
 	def index
-		@article = Article.all
+		@article = Article.paginate(page: params[:page], per_page: 5)
 	end	
 	def edit
 		@article = Article.find(params[:id])
@@ -10,7 +10,7 @@ class Admin::ArticlesController < ApplicationController
 		@article = Article.find(params[:id])
 		if @article.update(article_params)
 			flash[:notice] = "Article Updated Successfully"
-			@article = Article.all
+		  @article = Article.paginate(page: params[:page], per_page: 5)
 			render :index
 		else
 			flash[:notice] = "Article Updation failure"

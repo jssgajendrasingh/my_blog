@@ -15,9 +15,8 @@ Rails.application.routes.draw do
     end 
     resources :articles , only: [:index,:edit,:update]
     resources :comments , only: [:index,:edit,:update]
-    resources :sessions, only: [:new, :create, :destroy] do 
-      get "home", on: :collection
-    end  
+    resources :sessions, only: [:create] 
+  
   end
   root 'admin/sessions#index'
   get '/login', to: 'admin/sessions#new', as: :admin_login

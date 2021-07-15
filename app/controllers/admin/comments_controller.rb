@@ -1,7 +1,7 @@
 class Admin::CommentsController < ApplicationController
 	load_and_authorize_resource
 	def index
-		@comment = Comment.all
+		@comment = Comment.paginate(page: params[:page], per_page: 5)
 	end	
 
 	def edit
@@ -12,7 +12,7 @@ class Admin::CommentsController < ApplicationController
 		@comment = Comment.find(params[:id])
 		if @comment.update(comment_params)
 			flash[:notice] = "Comment is Updated is Successfully"
-			@comment = Comment.all
+		  @comment = Comment.paginate(page: params[:page], per_page: 5)
 			render :index		
 		else 
 			flash[:notice] = "Comment updation is failure"

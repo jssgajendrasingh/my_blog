@@ -12,10 +12,19 @@
       <li class="nav-item active">
     <%= link_to "Aricle List",admin_comments_path,class: "nav-link" %>
       </li>
+       </ul>
+    <ul class="navbar-nav ml-auto">
+      <% unless session[:user_id].nil? %>
+          <% @user = User.find(session[:user_id]) %>
+          <li class="nav-item active">
+           <%=  @user.email %>
+          </li> 
+      <% end %>
       <li class="nav-item active">
-    <%= link_to "Log Out",admin_logout_path,method: :delete,class: "nav-link" %>   
-    </li>     
-    </ul>
+       <%= link_to "Log Out",admin_logout_path,method: :delete,class: "nav-link" %>   
+      </li> 
+    </ul>   
+   
 
   </div>
 </nav>

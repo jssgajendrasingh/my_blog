@@ -10,9 +10,44 @@
   </head>
 
   <body>
-    <% flash.each do |name,msg| %>
-     <%= content_tag :div,msg,class: name %>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand">Admin Portal</a>
+  
+  <div class="collapse navbar-collapse" id="navbarNav">
+    <ul class="navbar-nav">
+    <% if session[:user_id].nil? %>
+      <li class="nav-item active">
+      <%= link_to "Log In",admin_login_path,class: "nav-link" %>   
+    </li>
+    <% else %>
+      <li class="nav-item active">
+    <%= link_to "User List",admin_users_path,class: "nav-link"%>
+      </li>
+      <li class="nav-item active">
+        <%= link_to "Comment List",admin_comments_path,class: "nav-link" %>
+      </li>
+      <li class="nav-item active">
+    <%= link_to "Aricle List",admin_articles_path,class: "nav-link" %>
+      </li>
+      <li>
+        <% flash.each do |name,msg| %>
+        <%= content_tag :div,msg,class: name %>
+        <% end %>
+      </li>
+    </ul>
+    <ul class="navbar-nav ml-auto">
+      <% @user = User.find(session[:user_id]) %>
+      <li class="nav-item active">
+           <%=  @user.email %>
+      </li> 
+      <li class="nav-item active">
+       <%= link_to "Log Out",admin_logout_path,method: :delete,class: "nav-link" %>   
+      </li> 
+    </ul>  
     <% end %>
+
+  </div>
+</nav>
     <%= yield %>
   </body>
 </html>

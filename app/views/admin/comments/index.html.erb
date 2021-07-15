@@ -1,5 +1,4 @@
-<%= link_to "Log Out",admin_logout_path,method: :delete %>
-<h1 align="center">Comments List</h1>
+<h3 align="center">Comments</h3>
 <table align="center" border="1">
 	<tr>
 		<td>Name</td>
@@ -11,10 +10,10 @@
 	</tr>
 	<% @comment.each do |comment| %>
 	<tr>
-		<td><%= comment[:fullname] %></td>
-		<td><%= comment[:email] %></td>
-		<td><%= comment[:message] %></td>
-		<td><%= comment[:status] %></td>
+		<td><%= comment.fullname%></td>
+		<td><%= comment.email %></td>
+		<td><%= comment.message %></td>
+		<td><%= article_publish(comment.status) %></td>
 		<td>
 			<%= link_to "Edit", edit_admin_comment_path(comment) %> 
 		</td>
@@ -22,3 +21,10 @@
 	</tr>
 	<% end %>	
 </table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">    
+   	<%= will_paginate @comment %>
+  </ul>
+</nav>
+
+
