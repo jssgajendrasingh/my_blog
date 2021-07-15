@@ -66,14 +66,11 @@ class Admin::UsersController < ApplicationController
 	private
 	def user_params
 		user = params[:user]
-		password = user[:password]
 		super_admin = user[:super_admin]
-		if password == "" && super_admin == ""
+		if super_admin == ""
 			params.require(:user).permit(:first_name,:last_name,:about,:email)
-		elsif password == ""
-			params.require(:user).permit(:first_name,:last_name,:about,:email,:super_admin)
 		else 
-			params.require(:user).permit(:first_name,:last_name,:about,:email,:password)
+			params.require(:user).permit(:first_name,:last_name,:about,:email,:super_admin)
 		end
 	end	
 	
