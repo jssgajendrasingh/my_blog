@@ -1,4 +1,14 @@
-<h3 align="center">Articles</h3>
+<h3 align="center">Articles<br>
+<%= link_to "Create Article", new_admin_article_path %>
+</h3>
+<center>
+<%= form_tag search_article_admin_articles_path, method: :get do %>
+   <%= select_tag "Search By", options_for_select([ "Title", "Content" ])%>
+   <%= text_field_tag(:q) %>
+   <%= submit_tag("Search") %>
+<% end %>
+</center>
+<br>
 <table align="center" border="1">
 	<tr>
 		<td>Title</td>
@@ -7,7 +17,7 @@
 		<td>Created</td>
 		<td>Action</td>
 	</tr>
-	<% @article.each do |article| %>
+	<% @articles.each do |article| %>
 	<tr>
 		<td><%= article.title%></td>
 		<td><%= article.content%></td>

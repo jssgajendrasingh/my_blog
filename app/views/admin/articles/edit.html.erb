@@ -7,9 +7,11 @@
 	<%= form.label :content %>
 	<%= form.text_area :content,cols: 50, rows: 5 %>
 </p>
-<p>
-	<%= form.label :is_publish %>
-	<%= form.check_box :is_publish %>
+<p>	
+	<% if @current_user.super_admin %>
+		<%= form.label :is_publish %>
+		<%= form.check_box :is_publish %>
+	<% end %>	
 </p>
 <p>
 	<%= form.submit("Update") %>

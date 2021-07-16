@@ -1,0 +1,18 @@
+<h1 align="center">Add Article</h1>
+<%= form_for(:article,url: admin_articles_path) do |f|%>
+	<p>
+	  <%= f.label :title %>
+	  <%= f.text_field :title,:required => true %>
+	</p>
+	<p>
+		<%= f.label :content %>
+		<%= f.text_area :content,cols: 30,rows: 5,:required => true %>
+	</p>
+	<p>
+		<%= f.hidden_field :user %>
+		<%= hidden_field_tag :user, session[:user_id] %>
+	</p>
+	<p>
+		<%= f.submit("ADD") %>
+	</p>
+<% end %>

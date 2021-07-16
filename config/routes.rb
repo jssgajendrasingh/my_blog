@@ -13,9 +13,12 @@ Rails.application.routes.draw do
       get "change_password", on: :member
       patch "update_password", on: :member
     end 
-    resources :articles , only: [:index,:edit,:update,:show]
+    resources :articles , except: [:destroy] do
+      get "search_article", on: :collection
+    end  
     resources :comments , only: [:index]
     resources :sessions, only: [:create] 
+    resources :messages, only: [:index,:destroy]
   
   end
   root 'admin/sessions#index'

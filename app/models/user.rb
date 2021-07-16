@@ -8,4 +8,5 @@ class User < ApplicationRecord
   	validates :first_name, length: {minimum: 3}
   	validates :password_digest , length: {minimum: 6}
 
+  		
 end

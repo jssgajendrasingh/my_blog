@@ -1,0 +1,30 @@
+<h3 align="center">Messages</h3>
+<table align="center" border="1">
+	<tr>
+		<td>Full name</td>
+		<td>Email</td>
+		<td>Content</td>
+		<td>Created</td>
+		<td>Action</td>
+	
+	</tr>
+	<% @messages.each do |message| %>
+	<tr>
+		<td><%= message.fullname%></td>
+		<td><%= message.email %></td>
+		<td><%= message.content %></td>
+		<td><%= time_data(message.created_at) %></td>
+		<td>
+		<%= link_to "Deleted",admin_message_path(message),method: :delete, 
+		data: { confirm: "Are you sure?" }%>
+		</td>
+	</tr>
+	<% end %>	
+</table>
+<nav aria-label="Page navigation example">
+  <ul class="pagination justify-content-center">    
+   	<%= will_paginate @messages %>
+  </ul>
+</nav>
+
+

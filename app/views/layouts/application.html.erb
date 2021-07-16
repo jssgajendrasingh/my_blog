@@ -29,11 +29,13 @@
       <li class="nav-item active">
     <%= link_to "Articles",admin_articles_path,class: "nav-link" %>
       </li>
+      <li class="nav-item active">
+    <%= link_to "Messages",admin_messages_path,class: "nav-link" %>
+      </li>
     </ul>
     <ul class="navbar-nav ml-auto">
-      <% @user = User.find(session[:user_id]) %>
       <li class="nav-item active">
-           <%=  @user.email %>
+           <%= @current_user.email %>
       </li> 
       <li class="nav-item active">
        <%= link_to "Log Out",admin_logout_path,method: :delete,class: "nav-link" %>   
