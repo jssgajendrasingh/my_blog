@@ -45,7 +45,7 @@ class Admin::ArticlesController < ApplicationController
 	end	
 
 	def search_article
-		#binding.pry
+		binding.pry
 		search = params[:Search]
 		if search == "Title"
 			@articles = Article.where('title LIKE ?',"%#{params[:q]}%").paginate(per_page: 5, page: params[:page])
