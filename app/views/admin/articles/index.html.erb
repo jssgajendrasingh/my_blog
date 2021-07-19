@@ -3,7 +3,7 @@
 </h3>
 <center>
 <%= form_tag search_article_admin_articles_path, method: :get do %>
-   <%= select_tag "Search By", options_for_select([ "Title", "Content" ])%>
+   <%= select_tag "Search", options_for_select([ "Title", "Content" ])%>
    <%= text_field_tag(:q) %>
    <%= submit_tag("Search") %>
 <% end %>

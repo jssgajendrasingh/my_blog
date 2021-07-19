@@ -17,6 +17,7 @@ Rails.application.routes.draw do
       get "search_article", on: :collection
     end  
     resources :comments , only: [:index]
+    resources :tags , only: [:new,:create]
     resources :sessions, only: [:create] 
     resources :messages, only: [:index,:destroy]
   

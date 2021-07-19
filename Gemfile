@@ -69,3 +69,5 @@ gem 'bootstrap', '~> 4.0.0'
 gem 'jquery-rails'
 gem 'will_paginate', '~> 3.1.0'
 gem 'cancancan'
+gem 'select2-rails'
+

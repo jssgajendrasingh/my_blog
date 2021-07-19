@@ -1,5 +1,10 @@
-<h1 align="center">Add Article</h1>
+<h3 align="center">Create New Article</h3>
+
 <%= form_for(:article,url: admin_articles_path) do |f|%>
+	<p>
+		<%= f.label "tag"%>
+		<%= f.select :tags,options_for_select(@tags.collect{ |tag| [tag.name ,tag.id]}),{:include_blank => true},{:multiple => true} %>
+	</p>
 	<p>
 	  <%= f.label :title %>
 	  <%= f.text_field :title,:required => true %>
@@ -8,11 +13,14 @@
 		<%= f.label :content %>
 		<%= f.text_area :content,cols: 30,rows: 5,:required => true %>
 	</p>
-	<p>
-		<%= f.hidden_field :user %>
-		<%= hidden_field_tag :user, session[:user_id] %>
-	</p>
+
 	<p>
 		<%= f.submit("ADD") %>
 	</p>
 <% end %>
+<script>
+// Check box style
+$("#article_tags").select2({
+    theme: "bootstrap"
+})
+</script>

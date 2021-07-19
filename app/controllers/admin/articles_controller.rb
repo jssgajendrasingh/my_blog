@@ -12,14 +12,18 @@ class Admin::ArticlesController < ApplicationController
 	end	
 
 	def new
-
+		@tags = Tag.all
 	end
 	
 	def create
-		#binding.pry
+		binding.pry
 		@article = @current_user.articles.create(article_params_new)
+		artilce = params.require(:article)
+		@tags = artilce[:tags]
+	  @tags.each do |tag_id|
+		   ArticleTag.create(article: @article,tag_id: tag_id)
+		end 
 		redirect_to action: "index"
-
 	end	
 
 	def show
@@ -45,7 +49,7 @@ class Admin::ArticlesController < ApplicationController
 	end	
 
 	def search_article
-		binding.pry
+		#binding.pry
 		search = params[:Search]
 		if search == "Title"
 			@articles = Article.where('title LIKE ?',"%#{params[:q]}%").paginate(per_page: 5, page: params[:page])
@@ -57,12 +61,13 @@ class Admin::ArticlesController < ApplicationController
 
 	private
 
-	def article_params
+	 def article_params
 		params.require(:article).permit(:title,:content,:is_publish)
-	end	
+	 end	
 
-  def article_params_new
-  	params.require(:article).permit(:title,:content,:user_id)
-  end	
+   def article_params_new
+  	params.require(:article).permit(:title,:content)
+   end	
+   
 
 end
