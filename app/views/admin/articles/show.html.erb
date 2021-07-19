@@ -1,5 +1,13 @@
+<br>
 <div align="center">
 	<table border="1">
+		<tr>
+			<td>Article Tags</td>
+			<td><% @tags.each do |tag| %>
+				<%= tag_with_hash(tag.name) %>
+				<% end %>
+			</td>
+		</tr>
 		<tr>
 			<td>Title</td>
 			<td><%= @article.title %></td>

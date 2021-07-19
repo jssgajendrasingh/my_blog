@@ -12,6 +12,9 @@ module ApplicationHelper
   	end
   end
 
+  def tag_with_hash(name)
+    return "#" + name
+  end  
   
 
 end

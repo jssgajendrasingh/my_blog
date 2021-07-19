@@ -15,7 +15,7 @@
 		<td>Content</td>
 		<td>Publish</td>
 		<td>Created</td>
-		<td>Action</td>
+		<td colspan="2">Action</td>
 	</tr>
 	<% @articles.each do |article| %>
 	<tr>
@@ -24,6 +24,8 @@
 		<td><%= article_publish(article.is_publish, truthy: "Yes", falsey: "No") %></td>
 		<td><%= time_data(article.created_at) %></td>
 		<td><%= link_to "Edit", edit_admin_article_path(article)%> </td>
+		<td><%= link_to "Show", admin_article_path(article)%> </td>
+
 	</tr>
 	<% end %>
 </table>
